@@ -1,0 +1,32 @@
+{
+  "name": "budget-tool",
+  "version": "0.0.1",
+  "description": "A budgeting tool.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+  },
+  "keywords": [],
+  "author": "Dani Fenske",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "css-loader": "0.28.4",
+    "extract-text-webpack-plugin": "2.1.0",
+    "node-sass": "4.5.3",
+    "react-hot-loader": "^3.1.3",
+    "recharts": "^1.0.0-beta.10",
+    "sass-loader": "6.0.6",
+    "webpack": "2.2.0",
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^1.11.0"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
