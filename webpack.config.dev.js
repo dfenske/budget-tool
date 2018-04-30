@@ -1,15 +1,15 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: {
-        'budget-tool': __dirname + '/lib/index.js',
-        'budget-tool.min': __dirname + '/lib/index.js'
+        'main': [__dirname + '/main.js']
     },
     output: {
         filename: '[name].js',
-        path: __dirname + '/dist'
+        path: __dirname + '/dist',
+        publicPath: 'http://localhost:8080/dist/'
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
@@ -19,12 +19,7 @@ module.exports = {
                 warnings: false
             }
         }),
-        new ExtractTextPlugin('budget-tool.css'),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.min\.css$/,
-            cssProcessor: require('cssnano'),
-            cssProcessorOptions: { discardComments: { removeAll: true } }
-        })
+        new ExtractTextPlugin('budget-tool.css')
     ],
     module: {
         rules: [
@@ -38,5 +33,14 @@ module.exports = {
                 use: ExtractTextPlugin.extract({ use: ['css-loader', 'sass-loader'] })
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin('main.css')
+    ],
+    devServer: {
+        host: 'localhost',
+        port: 8080,
+        https: false
+    },
+    devtool: 'inline-source-map'
 };
